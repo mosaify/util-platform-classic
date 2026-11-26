@@ -2,9 +2,6 @@ import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnLockMismatchReport
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootEnvSpec
 
-group = "dev.samoylenko"
-version = "0.1.1"
-
 repositories { mavenCentral() }
 
 plugins {
@@ -73,14 +70,14 @@ mavenPublishing {
     publishToMavenCentral()
 
     pom {
-        name = "Platform Utils"
+        name = "util-platform-classic"
         description = "A basic platform utils library (Kotlin Multiplatform)"
-        url = "https://github.com/samoylenko/util-platform"
+        url = "https://github.com/mosaify/util-platform-classic"
 
         licenses {
             license {
                 name = "The MIT License"
-                url = "https://github.com/samoylenko/util-platform/blob/main/LICENSE"
+                url = "https://github.com/mosaify/util-platform-classic/blob/main/LICENSE"
             }
         }
 
@@ -89,13 +86,21 @@ mavenPublishing {
                 id = "samoylenko"
                 name = "Michael Samoylenko"
                 url = "https://github.com/samoylenko"
+                roles.add("owner")
+            }
+        }
+
+        contributors {
+            contributor {
+                name = "Vadim Kuhay"
+                url = "https://github.com/rdd13r"
             }
         }
 
         scm {
-            url = "https://github.com/samoylenko/util-platform"
-            connection = "scm:git:git://github.com/samoylenko/util-platform.git"
-            developerConnection = "scm:git:ssh://git@github.com:samoylenko/util-platform.git"
+            url = "https://github.com/mosaify/util-platform-classic"
+            connection = "scm:git:git://github.com/mosaify/util-platform-classic.git"
+            developerConnection = "scm:git:ssh://git@github.com:mosaify/util-platform-classic.git"
         }
     }
 }

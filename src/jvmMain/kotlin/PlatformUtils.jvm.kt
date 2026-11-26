@@ -1,4 +1,4 @@
-package dev.samoylenko.util.platform
+package dev.mosaify.util.platform
 
 internal actual fun getCurrentPlatformImpl(): Platform = Platform.JVM
 

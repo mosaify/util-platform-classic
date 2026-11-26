@@ -1,4 +1,4 @@
-= Platform Utils - Kotlin Multiplatform
+= util-platform-classic - Kotlin Multiplatform
 
 Basic platform utils to use with Kotlin Multiplatform projects.
 
@@ -13,6 +13,6 @@ Currently only supports JVM and NodeJS platforms.
 // ...
 
 dependencies {
-    implementation("dev.samoylenko:util-platform:0.1.1")
+    implementation("dev.mosaify:util-platform-classic:1.0.0")
 }
 ----

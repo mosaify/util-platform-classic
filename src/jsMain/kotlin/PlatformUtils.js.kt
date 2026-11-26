@@ -1,4 +1,4 @@
-package dev.samoylenko.util.platform
+package dev.mosaify.util.platform
 
 import node.process.win32
 

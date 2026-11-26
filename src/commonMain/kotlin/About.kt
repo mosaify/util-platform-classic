@@ -1,4 +1,4 @@
-package dev.samoylenko.util.platform
+package dev.mosaify.util.platform
 
 public object About {
     public const val NAME: String = "util-platform-classic"

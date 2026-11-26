@@ -1,4 +1,4 @@
-import dev.samoylenko.util.platform.PlatformUtils
+import dev.mosaify.util.platform.PlatformUtils
 import io.klogging.config.ANSI_INFO
 import io.klogging.config.loggingConfiguration
 import io.kotest.assertions.throwables.shouldNotThrowAny

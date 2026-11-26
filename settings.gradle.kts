@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-rootProject.name = "util-platform"
+rootProject.name = "util-platform-classic"
 
 pluginManagement {
     repositories {

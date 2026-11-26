@@ -1,4 +1,4 @@
-package dev.samoylenko.util.platform
+package dev.mosaify.util.platform
 
 public enum class OperatingSystem {
     WINDOWS, POSIX, BROWSER

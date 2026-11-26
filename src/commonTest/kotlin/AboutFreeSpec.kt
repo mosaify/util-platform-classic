@@ -1,4 +1,4 @@
-import dev.samoylenko.util.platform.About
+import dev.mosaify.util.platform.About
 import io.kotest.core.spec.style.FreeSpec
 import io.kotest.matchers.shouldBe
 
