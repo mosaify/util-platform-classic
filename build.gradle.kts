@@ -17,6 +17,8 @@ plugins {
 }
 
 kotlin {
+    jvmToolchain(providers.gradleProperty("versionOfJava").get().toInt())
+
     explicitApi()
 
     withSourcesJar(publish = true)
