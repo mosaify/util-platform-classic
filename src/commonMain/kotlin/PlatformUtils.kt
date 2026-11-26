@@ -1,6 +1,6 @@
 package dev.samoylenko.util.platform
 
-import io.github.oshai.kotlinlogging.KotlinLogging
+import io.klogging.NoCoLogging
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 
@@ -9,9 +9,7 @@ internal expect fun getCurrentOsImpl(): OperatingSystem
 internal expect fun getEnvImpl(name: String): String?
 internal expect fun getHomeDirImpl(): String?
 
-public object PlatformUtils {
-
-    internal val logger = KotlinLogging.logger {}
+public object PlatformUtils : NoCoLogging {
 
     public fun getCurrentPlatform(): Platform = getCurrentPlatformImpl()
 
@@ -21,9 +19,10 @@ public object PlatformUtils {
 
     public fun getHomeDir(): String? = getHomeDirImpl()
 
-    // TODO: dangerous function, need some controls to ensure it doesn't delete anything outside the directory
+    public fun logWarning(message: () -> String): Unit = logger.warn { message() }
+
     public fun deleteRecursively(path: Path) {
-        logger.warn { "Deleting $path" } // TODO: warnings for now just to watch what it deletes
+        logWarning { "Deleting $path" }
 
         if (SystemFileSystem.metadataOrNull(path)?.isDirectory == true) {
             SystemFileSystem.list(path).forEach { deleteRecursively(it) }

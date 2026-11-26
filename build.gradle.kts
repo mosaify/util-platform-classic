@@ -38,7 +38,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(libs.kotlinx.io)
-            api(libs.kotlin.logging)
+            api(libs.klogging)
         }
 
         commonTest.dependencies {
@@ -52,7 +52,6 @@ kotlin {
         }
 
         jvmTest.dependencies {
-            api(libs.logback.classic)
             implementation(project.dependencies.platform(libs.junit.bom))
             implementation(project.dependencies.platform(libs.kotest.bom))
             implementation(libs.kotest.runner.junit6)
