@@ -1,7 +1,7 @@
 [versions]
 kotlin = "2.4.21"
 kotlin-logging = "8.0.4"
-kotlinx-io = "0.9.1"
+kotlinx-io = "0.9.3"
 logback = "1.6.5"
 maven-publish = "0.37.0"
 
