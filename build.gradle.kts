@@ -14,6 +14,9 @@ plugins {
     alias(libs.plugins.kotlin.plugin.serialization)
 
     alias(libs.plugins.maven.publish)
+
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.kotest)
 }
 
 kotlin {
@@ -39,7 +42,9 @@ kotlin {
         }
 
         commonTest.dependencies {
-            implementation(kotlin("test"))
+            implementation(project.dependencies.platform(libs.kotest.bom))
+            implementation(libs.kotest.framework.engine)
+            implementation(libs.kotest.assertions.core)
         }
 
         jsMain.dependencies {
@@ -48,8 +53,15 @@ kotlin {
 
         jvmTest.dependencies {
             api(libs.logback.classic)
+            implementation(project.dependencies.platform(libs.junit.bom))
+            implementation(project.dependencies.platform(libs.kotest.bom))
+            implementation(libs.kotest.runner.junit6)
         }
     }
+}
+
+tasks.withType<Test>().configureEach {
+    useJUnitPlatform()
 }
 
 signing {

@@ -4,13 +4,23 @@ kotlin-logging = "8.0.4"
 kotlinx-io = "0.9.3"
 logback = "1.6.5"
 maven-publish = "0.37.0"
+junit = "6.1.3"
+kotest = "6.2.7"
+ksp = "2.3.14"
 
 [plugins]
 kotlin-plugin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kotest = { id = "io.kotest", version.ref = "kotest" }
 
 [libraries]
 kotlin-logging = { group = "io.github.oshai", name = "kotlin-logging", version.ref = "kotlin-logging" }
 kotlinx-io = { group = "org.jetbrains.kotlinx", name = "kotlinx-io-core", version.ref = "kotlinx-io" }
 logback-classic = { group = "ch.qos.logback", name = "logback-classic", version.ref = "logback" }
+junit-bom = { module = "org.junit:junit-bom", version.ref = "junit" }
+kotest-bom = { module = "io.kotest:kotest-bom", version.ref = "kotest" }
+kotest-runner-junit6 = { module = "io.kotest:kotest-runner-junit6" }
+kotest-framework-engine = { module = "io.kotest:kotest-framework-engine" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core" }
