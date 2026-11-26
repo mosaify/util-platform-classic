@@ -1,7 +1,5 @@
 package dev.mosaify.util.platform
 
-internal actual fun getCurrentPlatformImpl(): Platform = Platform.JVM
-
 internal actual fun getCurrentOsImpl(): OperatingSystem =
     if (System.getProperty("os.name").startsWith("Win", ignoreCase = true)) OperatingSystem.WINDOWS
     else OperatingSystem.POSIX

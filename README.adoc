@@ -4,7 +4,7 @@ Basic platform utils to use with Kotlin Multiplatform projects.
 
 == Supported platforms
 
-Currently only supports JVM and NodeJS platforms.
+JS (browser, NodeJS), JVM, linuxX64, macosArm64, mingwX64.
 
 == Using the library
 

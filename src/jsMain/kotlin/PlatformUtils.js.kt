@@ -1,19 +1,17 @@
 package dev.mosaify.util.platform
 
-import node.process.win32
-
-internal actual fun getCurrentPlatformImpl(): Platform = Platform.JS
+private val process: dynamic = js("globalThis.process")
 
 internal actual fun getCurrentOsImpl(): OperatingSystem =
-    if (jsTypeOf(node.process.process) == "object") {
-        if (node.process.process.platform == node.process.Platform.win32) OperatingSystem.WINDOWS
+    if (jsTypeOf(process) == "object") {
+        if (process.platform == "win32") OperatingSystem.WINDOWS
         else OperatingSystem.POSIX
     } else OperatingSystem.BROWSER
 
 internal actual fun getEnvImpl(name: String): String? =
-    if (getCurrentOsImpl() != OperatingSystem.BROWSER) node.process.process.env[name]
+    if (getCurrentOsImpl() != OperatingSystem.BROWSER) process.env[name] as String?
     else null
 
 internal actual fun getHomeDirImpl(): String? =
-    if (getCurrentOsImpl() != OperatingSystem.BROWSER) node.os.homedir()
-    else null
+    if (getCurrentOsImpl() == OperatingSystem.WINDOWS) getEnvImpl("USERPROFILE")
+    else getEnvImpl("HOME")

@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.ExperimentalJsTestDsl
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnLockMismatchReport
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnPlugin
 import org.jetbrains.kotlin.gradle.targets.js.yarn.YarnRootEnvSpec
@@ -8,7 +9,6 @@ plugins {
     signing
 
     alias(libs.plugins.kotlin.plugin.multiplatform)
-    alias(libs.plugins.kotlin.plugin.serialization)
 
     alias(libs.plugins.maven.publish)
 
@@ -24,28 +24,42 @@ kotlin {
     withSourcesJar(publish = true)
 
     js {
+        browser {
+            @OptIn(ExperimentalJsTestDsl::class)
+            test {
+                chromium()
+            }
+        }
         nodejs {
-            // https://github.com/JetBrains/kotlin-wrappers/issues/2221
             useEsModules()
         }
     }
 
     jvm {}
+    linuxX64()
+    macosArm64()
+    mingwX64()
+
+    @OptIn(org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi::class)
+    applyDefaultHierarchyTemplate {
+        common {
+            group("klogging") { withJvm(); withJs() }
+        }
+    }
 
     sourceSets {
         commonMain.dependencies {
             api(libs.kotlinx.io)
-            api(libs.klogging)
+        }
+
+        getByName("kloggingMain").dependencies {
+            implementation(libs.klogging)
         }
 
         commonTest.dependencies {
             implementation(project.dependencies.platform(libs.kotest.bom))
             implementation(libs.kotest.framework.engine)
             implementation(libs.kotest.assertions.core)
-        }
-
-        jsMain.dependencies {
-            implementation(kotlinWrappers.node)
         }
 
         jvmTest.dependencies {

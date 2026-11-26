@@ -66,20 +66,4 @@ Sessionx.vim
 # Package Files #
 *.jar
 # JS
-yarn.lock
-
-
-### Project template
-github/
-abstract-report-model/
-abstract-report-parser/
-deprecated/
-mosaify-classic/
-report-auto-parser/
-report-auto-parser-ux/
-report-parser-anchore-grype/
-report-parser-snyk/
-report-samples/
-reports-auto-processor-action/
-util-platform-classic/
-roadmap/
+kotlin-js-store

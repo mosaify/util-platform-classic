@@ -1,17 +1,13 @@
 package dev.mosaify.util.platform
 
-import io.klogging.NoCoLogging
 import kotlinx.io.files.Path
 import kotlinx.io.files.SystemFileSystem
 
-internal expect fun getCurrentPlatformImpl(): Platform
 internal expect fun getCurrentOsImpl(): OperatingSystem
 internal expect fun getEnvImpl(name: String): String?
 internal expect fun getHomeDirImpl(): String?
 
-public object PlatformUtils : NoCoLogging {
-
-    public fun getCurrentPlatform(): Platform = getCurrentPlatformImpl()
+public object PlatformUtils {
 
     public fun getCurrentOs(): OperatingSystem = getCurrentOsImpl()
 
@@ -19,7 +15,7 @@ public object PlatformUtils : NoCoLogging {
 
     public fun getHomeDir(): String? = getHomeDirImpl()
 
-    public fun logWarning(message: () -> String): Unit = logger.warn { message() }
+    public fun logWarning(message: () -> String): Unit = PlatformLogging.warn(message)
 
     public fun deleteRecursively(path: Path) {
         logWarning { "Deleting $path" }
