@@ -50,6 +50,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(libs.kotlinx.io)
+            implementation(project.dependencies.platform(kotlin("bom")))
         }
 
         getByName("kloggingMain").dependencies {
